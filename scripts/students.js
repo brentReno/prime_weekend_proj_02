@@ -36,6 +36,7 @@ var displayStudents = function(counct){
   console.log('students array:', students);
     //empty the outputDiv
     $('#outputDiv').empty();
+    $('#buttonDiv').empty();
     //create new header
     var newHeader = document.createElement('h2');
     //fill header with name text
@@ -60,23 +61,30 @@ var displayStudents = function(counct){
     $('#outputDiv').append(newHeader);
     $('#outputDiv').append(newParagraph);
     $('#outputDiv').append(studentNumber);
-    $('#outputDiv').append(previousButton);
+    $('#buttonDiv').append(previousButton);
     studentButton();
-    $('#outputDiv').append(nextButton);
+    $('#buttonDiv').append(nextButton);
   };
 
 
 //Prev Next Buttons that wrap
 //nextClick function
 var nextClick = function(){
+
   console.log('in nextClick');
   if(count >= students.length-1){
     count =0;
-    displayStudents();
+    $('#outputDiv').fadeOut('fast', function(){
+      $(this).empty();
+      displayStudents();
+    }).fadeIn('fast');
   }
   else{
   count++;
-  displayStudents();
+  $('#outputDiv').fadeOut('fast', function(){
+    $(this).empty();
+    displayStudents();
+  }).fadeIn('fast');
 }//end if else
 
 };//end nextClick
@@ -86,11 +94,17 @@ var previousClick = function(){
 console.log('in previousClick');
 if(count <= 0 ){
   count = students.length -1;
-  displayStudents();
+  $('#outputDiv').fadeOut('fast', function(){
+    $(this).empty();
+    displayStudents();
+  }).fadeIn('fast');
 }
 else{
 count--;
-displayStudents();
+$('#outputDiv').fadeOut('fast', function(){
+  $(this).empty();
+  displayStudents();
+}).fadeIn('fast');
 }//end if else
 };//end previousClick
 
@@ -100,16 +114,21 @@ displayStudents();
      individualButton.setAttribute('class', 'studentButton');
      individualButton.setAttribute('id', '"'+i+'"');
      individualButton.textContent = students[ i ].first_name;
-     $('#outputDiv').append(individualButton);
+     $('#buttonDiv').append(individualButton);
 }//end for loop
-$('body').on('click', ".studentButton", function(){
-  ////////////What goes here???????\\\\\\\\\\\\\\\\\
-  console.log($(this).attr('id'));
-  var idNumber = parseInt($(this).attr('id').replace(/^"|"$/g, ""));
-  count =idNumber;
-  console.log(count);
-  displayStudents();
-});//end studentButton on click
 };//end studentButton
 
  //studentButton onClick
+ $(document).ready(function(){
+$('body').on('click', ".studentButton", function(){
+  //get id number
+  var idNumber = parseInt($(this).attr('id').replace(/^"|"$/g, ""));
+  //set count = to id number
+  count =idNumber;
+  //show student
+  $('#outputDiv').fadeOut('fast', function(){
+    $(this).empty();
+    displayStudents();
+  }).fadeIn('fast');
+});//end studentButton on click
+});//end document ready
