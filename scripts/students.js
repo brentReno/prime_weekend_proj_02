@@ -3,6 +3,7 @@ console.log('Students.js is sourced');
 ///////Global Variables\\\\\\\\\\\\\
 var count = 0;
 var i= 0;
+var totalSeconds = 0;
 //Global Array
 var students =[];
 
@@ -78,6 +79,7 @@ var nextClick = function(){
       $(this).empty();
       displayStudents();
     }).fadeIn('fast');
+    totalSeconds=0;
   }
   else{
   count++;
@@ -85,6 +87,7 @@ var nextClick = function(){
     $(this).empty();
     displayStudents();
   }).fadeIn('fast');
+  totalSeconds=0;
 }//end if else
 
 };//end nextClick
@@ -98,6 +101,7 @@ if(count <= 0 ){
     $(this).empty();
     displayStudents();
   }).fadeIn('fast');
+  totalSeconds=0;
 }
 else{
 count--;
@@ -105,6 +109,7 @@ $('#outputDiv').fadeOut('fast', function(){
   $(this).empty();
   displayStudents();
 }).fadeIn('fast');
+totalSeconds=0;
 }//end if else
 };//end previousClick
 
@@ -120,6 +125,7 @@ $('#outputDiv').fadeOut('fast', function(){
 
  //studentButton onClick
  $(document).ready(function(){
+   timer();
 $('body').on('click', ".studentButton", function(){
   //get id number
   var idNumber = parseInt($(this).attr('id').replace(/^"|"$/g, ""));
@@ -130,5 +136,19 @@ $('body').on('click', ".studentButton", function(){
     $(this).empty();
     displayStudents();
   }).fadeIn('fast');
+  totalSeconds=0;
 });//end studentButton on click
 });//end document ready
+
+//timer function
+var timer = function() {
+var  clock = setInterval(setTime, 1000);
+ function setTime(){
+  ++totalSeconds;
+  if( totalSeconds == 10){
+    console.log('Switch Student');
+    nextClick();
+    totalSeconds = 0;
+    }
+  }
+};
