@@ -48,6 +48,7 @@ var displayStudents = function(counct){
     newParagraph.textContent = students[ count ].info;
     //create student counter
     var studentNumber = document.createElement('p');
+    studentNumber.setAttribute("class","studentNumber");
     studentNumber.textContent = (count + 1) + ' / ' +students.length;
      //create NextButton
      var nextButton = '<button onClick="nextClick()" class="btn btn-info"> Next </button>';
