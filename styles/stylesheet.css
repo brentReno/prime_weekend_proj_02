@@ -1,0 +1,34 @@
+
+h1{
+  color: black;
+  text-align: center;
+  font-size: 48px;
+  text-decoration: underline;
+}
+.contents{
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgrey;
+
+}
+.studentInfo{
+  width:75%;
+  float:right;
+  margin: auto;
+  margin-top: 25%;
+  padding-left: 20%;
+}
+.nameButtons{
+  width: 25%;
+  float:right;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nameButtons{
+ margin-top: 5%;
+}
+.btn{
+   margin-bottom:2px;
+}

@@ -50,14 +50,10 @@ var displayStudents = function(counct){
     var studentNumber = document.createElement('p');
     studentNumber.textContent = (count + 1) + ' / ' +students.length;
      //create NextButton
-     var nextButton = document.createElement('button');
-     nextButton.textContent = 'Next>>';
-     nextButton.setAttribute('onClick', "nextClick()");
-
+     var nextButton = '<button onClick="nextClick()" class="btn btn-info"> Next </button>';
      //create previousButton
-     var previousButton =document.createElement('button');
-     previousButton.textContent = "<< Previous";
-     previousButton.setAttribute('onClick', "previousClick()");
+     var previousButton ='<button onClick ="previousClick()" class="btn btn-info"> Prev </button>';
+
      //append to the DOM
     $('#outputDiv').append(newHeader);
     $('#outputDiv').append(newParagraph);
@@ -115,10 +111,7 @@ totalSeconds=0;
 
  var studentButton= function(){
    for ( i = 0; i < students.length; i++) {
-     var individualButton = document.createElement('button');
-     individualButton.setAttribute('class', 'studentButton');
-     individualButton.setAttribute('id', '"'+i+'"');
-     individualButton.textContent = students[ i ].first_name;
+     var individualButton = '<button id=" '+ i +' " class="studentButton btn btn-info btn-xs">'+ students[ i ].first_name +'</button>';
      $('#buttonDiv').append(individualButton);
 }//end for loop
 };//end studentButton
